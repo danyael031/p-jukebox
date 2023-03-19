@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 import { createPlayerSlice } from './MediaPlayerSlice'
-import { PlayerState } from './types'
+import { AppState } from './types'
 
 
-const useBearStore = create<PlayerState>()((...a) => ({
+const useAppStore = create<AppState>()((...a) => ({
   ...createPlayerSlice(...a),
 }))
 
 
 export {
-  useBearStore
+  useAppStore
 }

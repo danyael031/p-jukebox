@@ -1,25 +1,19 @@
-
-
-export interface ToStConfig {
-  baseUrl: string,
+export type AudioStream = {
+  bitrate: number, // The bitrate of the audio stream in bytes
+  codec: string, // The codec of the audio stream
+  format: string,// The format of the audio stream
+  indexEnd: number, // Useful for creating dash streams
+  indexStart: number, // Useful for creating dash streams
+  initStart: number, // Useful for creating dash streams
+  initEnd: number, // Useful for creating dash streams
+  mimeType: string, // The mime type of the audio stream
+  quality: string, // The quality of the audio stream
+  url: string, // The stream's URL
+  videoOnly: boolean // Whether or not the stream is video only
 }
 
 export type StreamResponse = {
-  audioStreams: [
-    {
-      bitrate: number, // The bitrate of the audio stream in bytes
-      codec: string, // The codec of the audio stream
-      format: string,// The format of the audio stream
-      indexEnd: number, // Useful for creating dash streams
-      indexStart: number, // Useful for creating dash streams
-      initStart: number, // Useful for creating dash streams
-      initEnd: number, // Useful for creating dash streams
-      mimeType: string, // The mime type of the audio stream
-      quality: string, // The quality of the audio stream
-      url: string, // The stream's URL
-      videoOnly: boolean // Whether or not the stream is video only
-    }
-  ], // The audio streams of the video
+  audioStreams: Array<AudioStream>, // The audio streams of the video
   dash: string | null, // The dash manifest URL, to be used if not null (for OTF streams)
   description: string, // The description of the video
   dislikes: number, // The number of dislikes the video has

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { PIPED_API_ENDPOINT } from "../constants"
-import { StreamResponse } from "./types";
+import { StreamResponse } from "../types/service";
 
 const serviceClient = axios.create({baseURL: PIPED_API_ENDPOINT});
 
