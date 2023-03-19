@@ -1,0 +1,1 @@
+export const PIPED_API_ENDPOINT = "https://pipedapi.kavin.rocks"
