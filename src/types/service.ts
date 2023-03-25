@@ -71,3 +71,26 @@ export type StreamResponse = {
   ], // The video streams of the video
   views: number // The number of views the video has
 }
+
+
+
+export type Item = {
+  url: string,
+  type: string,
+  title: string,
+  thumbnail: string,
+  uploaderName: string,
+  uploaderUrl: string,
+  uploaderAvatar: string | null,
+  uploadedDate: string | null,
+  shortDescription: string | null,
+  duration: number,
+  views: number,
+  uploaded: number,
+  uploaderVerified: boolean,
+  isShort: boolean
+}
+
+export type SearchResponse = {
+  items: Array<Item>
+}

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { createPlayerSlice } from './MediaPlayerSlice'
+import { createPlayerSlice } from './mediaPlayerSlice'
 import { AppState } from './types'
 
 

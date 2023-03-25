@@ -14,7 +14,7 @@ export function MediaControl(){
   const [songData, setSongData] = useState<AudioStream| null>(null)
 
   async function fetchPlayerData(){
-    let response = await service.getStream("B2lmOei7qfk");
+    let response = await service.getStream("fHI8X4OXluQ");
 
     let sortAudioStream = response.data.audioStreams.sort((a, b)=> ( b.bitrate - a.bitrate ));
 

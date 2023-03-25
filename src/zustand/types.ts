@@ -1,4 +1,4 @@
-import { PlayerState } from "./MediaPlayerSlice/types";
+import { PlayerState } from "./mediaPlayerSlice/types";
 
 
 export interface AppState extends PlayerState{}

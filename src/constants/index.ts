@@ -1,1 +1,1 @@
-export const PIPED_API_ENDPOINT = "https://pipedapi.kavin.rocks"
+export const PIPED_API_ENDPOINT = "https://watchapi.whatever.social"
