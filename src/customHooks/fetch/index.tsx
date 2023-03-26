@@ -14,20 +14,8 @@
 * limitations under the License.
 */
 import { useEffect, useReducer, useRef } from 'react'
+import { Cache, State, Action } from './types';
 
-interface State<T> {
-  data?: T
-  error?: Error
-  loading?: boolean
-}
-
-type Cache<T> = { [url: string]: T }
-
-// discriminated union type
-type Action<T> =
-  | { type: 'loading' }
-  | { type: 'fetched'; payload: T }
-  | { type: 'error'; payload: Error }
 
 function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
   const cache = useRef<Cache<T>>({})
@@ -38,6 +26,7 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
   const initialState: State<T> = {
     error: undefined,
     data: undefined,
+    loading: true,
   }
 
   // Keep state logic separated
@@ -46,9 +35,9 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
       case 'loading':
         return { ...initialState }
       case 'fetched':
-        return { ...initialState, data: action.payload }
+        return { ...initialState, data: action.payload, loading: false }
       case 'error':
-        return { ...initialState, error: action.payload }
+        return { ...initialState, error: action.payload, loading: false }
       default:
         return state
     }

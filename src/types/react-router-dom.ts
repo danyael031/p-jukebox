@@ -13,4 +13,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-export const PIPED_API_ENDPOINT = "https://pipedapi.kavin.rocks";
+import { LoaderFunction } from 'react-router-dom';
+
+// https://github.com/remix-run/react-router/discussions/9792#discussioncomment-4809811
+export type LoaderData<TLoaderFn extends LoaderFunction> = Awaited<ReturnType<TLoaderFn>> extends Response | infer D
+	? D
+	: never;

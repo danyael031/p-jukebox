@@ -14,11 +14,30 @@
 * limitations under the License.
 */
 import React from "react";
+import { LoaderFunction, LoaderFunctionArgs, useLoaderData, redirect } from "react-router-dom";
+import { SongItem } from "../../components/SongItem";
+import { service } from "../../service";
+import { LoaderData } from "../../types/react-router-dom";
 
-export function SearchPage(){
-  return(
+export function SearchPage() {
+  const { data } = useLoaderData() as LoaderData<typeof searchLoader>;
+
+  return (
     <div>
       sarchPage
+      {data.items.map((item, index) => {
+        return (
+          <SongItem key={item.url} item={item}/>
+        )
+      })}
     </div>
   )
 }
+
+
+
+export const searchLoader = (async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const searchTerm = url.searchParams.get("q") || "";
+  return service.search(searchTerm);
+}) satisfies LoaderFunction

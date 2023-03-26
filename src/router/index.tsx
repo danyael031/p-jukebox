@@ -16,7 +16,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/Layout";
-import { SearchPage } from "../pages/Search";
+import { searchLoader, SearchPage } from "../pages/Search";
 
 export const router = createBrowserRouter([
   {
@@ -28,8 +28,10 @@ export const router = createBrowserRouter([
         element:  <div>root</div>,
       },
       {
-        path: "/search",
+        path: "search",
         element: <SearchPage />,
+        loader: searchLoader,
+        errorElement: <div>Error!</div>,
       }
 
     ]

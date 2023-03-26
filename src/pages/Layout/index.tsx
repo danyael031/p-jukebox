@@ -14,14 +14,21 @@
 * limitations under the License.
 */
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import { SearchBar } from "../../components/SearchBar";
 
-export function Layout(){
+export function Layout() {
+  const navigation = useNavigation();
+
+  navigation.state
   return (
     <div>
-      <SearchBar/>
-      <Outlet/>
+      <SearchBar />
+      {navigation.state === 'loading' ?
+        <div>Loading...</div>
+        :
+        <Outlet />
+      }
     </div>
   )
 
