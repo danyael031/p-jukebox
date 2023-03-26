@@ -89,7 +89,7 @@ export type StreamResponse = {
 
 
 
-export type Item = {
+export type SongItem = {
   url: string,
   type: string,
   title: string,
@@ -107,5 +107,5 @@ export type Item = {
 }
 
 export type SearchResponse = {
-  items: Array<Item>
+  items: Array<SongItem>
 }

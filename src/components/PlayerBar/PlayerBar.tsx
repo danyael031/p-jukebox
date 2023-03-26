@@ -13,10 +13,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { audioPlayer } from "../../audioPlayer";
-import { service } from "../../service";
-import { AudioStream } from "../../types/service";
 import { useAppStore } from "../../zustand";
 import { PlayPauseButton, SkipNextButton, SkipPreviousButton } from "./PlayerButtons";
 import styles from './styles.module.css';
@@ -26,33 +24,14 @@ export function MediaControl(){
 
 
   const playStatus = useAppStore(store=>store.playStatus);
-  const [songData, setSongData] = useState<AudioStream| null>(null)
+  const currentlyPlaying = useAppStore(store=>store.currentlyPlaying);
+  const nextSong = useAppStore(store=>store.nextSong);
 
-  async function fetchPlayerData(){
-    let response = await service.getStream("fHI8X4OXluQ");
-
-    let sortAudioStream = response.data.audioStreams.sort((a, b)=> ( b.bitrate - a.bitrate ));
-
-    let streamSong = sortAudioStream[0];
-
-    if(!streamSong){
-      return
-    }
-    
-    console.log({
-      streamSong,
-      sortAudioStream
-    })
-
-    setSongData(streamSong);
-    audioPlayer.setAttribute("src", streamSong?.url);
-  }
-
-  useEffect(()=>{fetchPlayerData()}, [])
+  const isDisabled = !currentlyPlaying;
 
   function playPauseControl(){
-
-    if(!songData){
+    
+    if(isDisabled){
       return
     }
 
@@ -70,15 +49,15 @@ export function MediaControl(){
   return (
     <div className={styles.mediaControlContainer}>
       <SkipPreviousButton
-        onClick={()=>{ alert("Si Sirvo, pinche perro")}}
+        onClick={()=>{}}
       />
       <PlayPauseButton
         isPlaying={playStatus === 'playing'}
         onClick={playPauseControl}
-        isDisabled={playStatus === 'disabled'}
+        isDisabled={isDisabled}
       />
       <SkipNextButton
-        onClick={()=>{ alert("Si Sirvo, pinche perro")}}
+        onClick={()=>{ nextSong(); }}
       />
     </div>
   )

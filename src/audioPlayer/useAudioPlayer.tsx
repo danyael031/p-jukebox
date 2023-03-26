@@ -13,23 +13,69 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { useEffect } from "react";
+import React, { EffectCallback, useEffect } from "react";
+import { service } from "../service";
 import { useAppStore } from "../zustand";
 
-export function useSetAudioPlayerEvents(audioPlayer: HTMLAudioElement){
+export function useSetAudioPlayerEvents(audioPlayer: HTMLAudioElement) {
   const play = useAppStore(state => state.play);
   const pause = useAppStore(state => state.pause);
+  const nextSong = useAppStore(state => state.nextSong);
+  const currentlyPlaying = useAppStore(state => state.currentlyPlaying);
 
-  useEffect(()=>{
+  const configEventListeners: EffectCallback = () => {
     audioPlayer.addEventListener('play', play);
     audioPlayer.addEventListener('pause', pause);
+    audioPlayer.addEventListener('ended', pause);
 
-    return ()=>{
+    return () => {
       audioPlayer.removeEventListener('play', play);
       audioPlayer.removeEventListener('pause', pause);
+      audioPlayer.removeEventListener('ended', nextSong);
     }
-  },[]);
+  }
+
+  const handleSongChange: EffectCallback = () => {
+
+    if (!currentlyPlaying) {
+      return
+    }
+
+    const queryString: string =  currentlyPlaying.url.split('?')[1];
+
+    const searchParams = new URLSearchParams(queryString);
+    const streamId = searchParams.get("v");
+
+    if(!streamId){
+      return
+    }
+
+    audioPlayer.pause();
+
+    const fetchSongItemData = async () => {
+      let response = await service.getStream(streamId);
+
+      let sortAudioStream = response.data.audioStreams.sort((a, b) => (b.bitrate - a.bitrate));
+
+      let audioStream = sortAudioStream[0];
+
+      console.log({audioStream});
+
+      if (!audioStream) {
+        return
+      }
+      audioPlayer.setAttribute("src", audioStream?.url);
+      audioPlayer.play();
+    }
+
+    fetchSongItemData();
+  }
 
 
+
+
+
+  useEffect(configEventListeners, []);
+  useEffect(handleSongChange, [currentlyPlaying]);
 
 }

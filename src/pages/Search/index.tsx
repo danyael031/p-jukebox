@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 import React from "react";
-import { LoaderFunction, LoaderFunctionArgs, useLoaderData, redirect } from "react-router-dom";
-import { SongItem } from "../../components/SongItem";
+import { LoaderFunction, LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { SongItemComponent } from "../../components/SongItem";
 import { service } from "../../service";
 import { LoaderData } from "../../types/react-router-dom";
 
@@ -27,14 +27,12 @@ export function SearchPage() {
       sarchPage
       {data.items.map((item, index) => {
         return (
-          <SongItem key={item.url} item={item}/>
+          <SongItemComponent key={item.url} item={item}/>
         )
       })}
     </div>
   )
 }
-
-
 
 export const searchLoader = (async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);

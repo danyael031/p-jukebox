@@ -14,12 +14,15 @@
 * limitations under the License.
 */
 import { PlayStatus } from "../../types";
-import { AudioStream, StreamResponse } from "../../types/service";
+import { SongItem } from "../../types/service";
 
 export interface PlayerState {
-  currentlyPlaying: StreamResponse | null,
-  currentlyPlayingAudioStream: AudioStream | null,
+  queue: Array<SongItem>,
+  currentlyPlaying: SongItem | null,
+  currentlyPlayingIndex: number | null,
   playStatus: PlayStatus,
   play: ()=> void,
   pause: ()=> void,
+  nextSong: ()=> void,
+  addToQueue: (songItem: SongItem ) => void,
 }
