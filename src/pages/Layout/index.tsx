@@ -16,19 +16,36 @@
 import React from "react";
 import { Outlet, useNavigation } from "react-router-dom";
 import { SearchBar } from "../../components/SearchBar";
+import { SongItemComponent } from "../../components/SongItem";
+import { useAppStore } from "../../zustand";
 
 export function Layout() {
   const navigation = useNavigation();
+  const queue = useAppStore(state => state.queue);
 
   navigation.state
   return (
     <div>
       <SearchBar />
+      <div style={{display: 'flex'}}>
+      <div style={{width: "50%", display: 'block'}}>
       {navigation.state === 'loading' ?
         <div>Loading...</div>
         :
         <Outlet />
       }
+      </div>
+      <div style={{width: "50%", display: 'block'}}>
+        {
+          queue.map((item)=>{
+            return (
+              <SongItemComponent key={item.url} item={item} />
+            )
+
+          })
+        }
+      </div>
+      </div>
     </div>
   )
 

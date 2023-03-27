@@ -27,6 +27,7 @@ export function SongItemComponent({ item }: { item: SongItem}) {
   return (
     <div onClick={handleOnClick}>
       <img src={item.thumbnail} style={{width: "100px"}}/>
+      <span>{item.title}</span>
     </div>
   )
 
