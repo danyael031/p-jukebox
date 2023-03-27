@@ -22,7 +22,6 @@ export function SkipPreviousButton(props: IconProps) {
   return (
     <Icon
       {...props}
-      isDisabled={true}
       iconStyle="round"
       iconColor="red"
       iconName="skip_previous"

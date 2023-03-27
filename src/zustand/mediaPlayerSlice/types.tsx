@@ -24,5 +24,6 @@ export interface PlayerState {
   play: ()=> void,
   pause: ()=> void,
   nextSong: ()=> void,
+  prevSong: ()=> void,
   addToQueue: (songItem: SongItem ) => void,
 }

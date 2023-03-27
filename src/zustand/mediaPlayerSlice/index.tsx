@@ -47,6 +47,27 @@ export const createPlayerSlice: StateCreator<
 
     set({currentlyPlaying: nextSong, currentlyPlayingIndex: nextSongIndex});
   },
+  prevSong:()=>{
+    const { queue, currentlyPlayingIndex } = get();
+
+    if(currentlyPlayingIndex === null){
+      return
+    }
+
+    let prevSongIndex = currentlyPlayingIndex - 1;
+
+    if(prevSongIndex < 0){
+      return
+    }
+
+    let prevSong = queue[prevSongIndex];
+
+    if (!prevSong){
+      return
+    }
+
+    set({currentlyPlaying: prevSong, currentlyPlayingIndex: prevSongIndex});
+  },
   addToQueue: (songItem: SongItem) => {
     let updatedState: Partial<AppState> = {};
     const { queue, currentlyPlaying } = get();

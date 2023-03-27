@@ -26,6 +26,7 @@ export function MediaControl(){
   const playStatus = useAppStore(store=>store.playStatus);
   const currentlyPlaying = useAppStore(store=>store.currentlyPlaying);
   const nextSong = useAppStore(store=>store.nextSong);
+  const prevSong = useAppStore(store=>store.prevSong);
 
   const isDisabled = !currentlyPlaying;
 
@@ -49,7 +50,7 @@ export function MediaControl(){
   return (
     <div className={styles.mediaControlContainer}>
       <SkipPreviousButton
-        onClick={()=>{}}
+        onClick={()=>{ prevSong(); }}
       />
       <PlayPauseButton
         isPlaying={playStatus === 'playing'}
