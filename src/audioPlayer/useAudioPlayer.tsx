@@ -23,10 +23,11 @@ export function useSetAudioPlayerEvents(audioPlayer: HTMLAudioElement) {
   const nextSong = useAppStore(state => state.nextSong);
   const currentlyPlaying = useAppStore(state => state.currentlyPlaying);
 
+
   const configEventListeners: EffectCallback = () => {
     audioPlayer.addEventListener('play', play);
     audioPlayer.addEventListener('pause', pause);
-    audioPlayer.addEventListener('ended', pause);
+    audioPlayer.addEventListener('ended', nextSong);
 
     return () => {
       audioPlayer.removeEventListener('play', play);
