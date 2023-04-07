@@ -20,46 +20,48 @@ import { PlayPauseButton, SkipNextButton, SkipPreviousButton } from "./PlayerBut
 import styles from './styles.module.css';
 
 
-export function MediaControl(){
+export function MediaControl() {
 
 
-  const playStatus = useAppStore(store=>store.playStatus);
-  const currentlyPlaying = useAppStore(store=>store.currentlyPlaying);
-  const nextSong = useAppStore(store=>store.nextSong);
-  const prevSong = useAppStore(store=>store.prevSong);
+  const playStatus = useAppStore(store => store.playStatus);
+  const currentlyPlaying = useAppStore(store => store.currentlyPlaying);
+  const nextSong = useAppStore(store => store.nextSong);
+  const prevSong = useAppStore(store => store.prevSong);
 
   const isDisabled = !currentlyPlaying;
 
-  function playPauseControl(){
-    
-    if(isDisabled){
+  function playPauseControl() {
+
+    if (isDisabled) {
       return
     }
 
-    if(playStatus === 'paused'){
+    if (playStatus === 'paused') {
       audioPlayer.play();
       return
     }
 
-    if(playStatus === "playing"){
+    if (playStatus === "playing") {
       audioPlayer.pause();
       return
     }
   }
 
   return (
-    <div className={styles.mediaControlContainer}>
-      <SkipPreviousButton
-        onClick={()=>{ prevSong(); }}
-      />
-      <PlayPauseButton
-        isPlaying={playStatus === 'playing'}
-        onClick={playPauseControl}
-        isDisabled={isDisabled}
-      />
-      <SkipNextButton
-        onClick={()=>{ nextSong(); }}
-      />
+    <div className={styles.mediaControlMargin}>
+      <div className={styles.mediaControlContainer}>
+        <SkipPreviousButton
+          onClick={() => { prevSong(); }}
+        />
+        <PlayPauseButton
+          isPlaying={playStatus === 'playing'}
+          onClick={playPauseControl}
+          isDisabled={isDisabled}
+        />
+        <SkipNextButton
+          onClick={() => { nextSong(); }}
+        />
+      </div>
     </div>
   )
 }

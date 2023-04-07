@@ -13,4 +13,4 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-export const PIPED_API_ENDPOINT = "https://pipedapi.kavin.rocks";
+export const PIPED_API_ENDPOINT = "https://api-piped.mha.fi";

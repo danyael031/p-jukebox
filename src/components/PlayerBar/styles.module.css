@@ -2,13 +2,17 @@
 .mediaControlContainer{
   width: 100%;
   height: 10rem;
-  background: linear-gradient(to bottom right , rgba(0, 0, 0, .65), rgba(63, 63, 63, 0.65)) ;
-  backdrop-filter: blur(7.7px);
-  -webkit-backdrop-filter: blur(7.7px);
+  background: #636363;
+  border-radius: 10rem;
   flex-shrink: 0;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+}
+
+.mediaControlMargin{
+  padding: 3rem;
+  width: 100%;
 }
 
 .playerButton {

@@ -1,0 +1,28 @@
+.albumCoverContainer{
+  position: relative;
+  display: inline-block;
+}
+
+.albumCoverImage{
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.fallbackImageContainer{
+  position: relative;
+  background-color: #4D4D4D;
+  height: 20rem;
+  width: 20rem;
+}
+
+.fallbackImageIcon{
+  position: absolute;
+  font-size: 5rem;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+}

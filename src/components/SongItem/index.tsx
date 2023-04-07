@@ -15,20 +15,22 @@
 */
 import { SongItem } from "../../types/service";
 import { useAppStore } from "../../zustand";
+import { AlbumCover } from "../AlbumCover";
 
-export function SongItemComponent({ item }: { item: SongItem}) {
+export function SongItemComponent({ item }: { item: SongItem }) {
 
-  const addToQueue = useAppStore((state )=> state.addToQueue)
-  
-  const handleOnClick = ()=>{
+  const addToQueue = useAppStore((state) => state.addToQueue)
+
+  const handleOnClick = () => {
     addToQueue(item);
   }
 
   return (
     <div onClick={handleOnClick}>
-      <img src={item.thumbnail} style={{width: "100px"}}/>
+      <AlbumCover albumSize="20rem" imageUrl={item.thumbnail}/>
       <span>{item.title}</span>
     </div>
   )
 
 }
+
