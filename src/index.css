@@ -5,6 +5,8 @@
 
 html{
   font-size: 62.5%;
+  background-color: black;
+  color: white;
 }
 
 html, body, #root{

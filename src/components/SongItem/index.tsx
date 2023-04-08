@@ -16,6 +16,7 @@
 import { SongItem } from "../../types/service";
 import { useAppStore } from "../../zustand";
 import { AlbumCover } from "../AlbumCover";
+import styles from "./styles.module.css";
 
 export function SongItemComponent({ item }: { item: SongItem }) {
 
@@ -26,8 +27,8 @@ export function SongItemComponent({ item }: { item: SongItem }) {
   }
 
   return (
-    <div onClick={handleOnClick}>
-      <AlbumCover albumSize="20rem" imageUrl={item.thumbnail}/>
+    <div className={styles.songItemContainer} onClick={handleOnClick}>
+      <AlbumCover className={styles.albumCover} albumSize="8rem" imageUrl={item.thumbnail}/>
       <span>{item.title}</span>
     </div>
   )
