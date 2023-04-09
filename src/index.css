@@ -1,16 +1,14 @@
-:root{
-  --pallete-1: 
-}
-
-
 html{
   font-size: 62.5%;
-  background-color: black;
   color: white;
 }
 
 html, body, #root{
-  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
 * {

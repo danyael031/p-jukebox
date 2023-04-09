@@ -1,0 +1,11 @@
+.barSongContainer{
+  position: relative;
+  width: 20rem;
+  height: 10rem;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0,0,0,0.5) 80%, var(--nord0) 100%);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}

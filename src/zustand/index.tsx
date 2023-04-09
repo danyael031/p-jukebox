@@ -16,10 +16,12 @@
 import { create } from 'zustand'
 import { createPlayerSlice } from './mediaPlayerSlice'
 import { AppState } from './types'
+import { createThemeSlice } from './themeSlice'
 
 
 const useAppStore = create<AppState>()((...a) => ({
   ...createPlayerSlice(...a),
+  ...createThemeSlice(...a),
 }))
 
 

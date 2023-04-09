@@ -17,6 +17,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/Layout";
 import { searchLoader, SearchPage } from "../pages/Search";
+import { Root } from "../pages/Root";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:  <div>root</div>,
+        element:  <Root/>,
       },
       {
         path: "search",

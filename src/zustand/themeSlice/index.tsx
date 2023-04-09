@@ -13,10 +13,19 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { PlayerState } from "./mediaPlayerSlice/types";
-import { ThemeState } from "./themeSlice/types";
+import { StateCreator } from 'zustand';
+import { Theme } from './types';
+import { AppState } from '../types'
+import { ThemeState } from './types';
 
-
-export interface AppState extends PlayerState, ThemeState{}
-
-
+export const createThemeSlice: StateCreator<
+  AppState,
+  [],
+  [],
+  ThemeState
+> = (set) => ({
+  currentTheme: 'nord',
+  changeTheme: (theme: Theme) => {
+    set({currentTheme: theme})
+  }
+})

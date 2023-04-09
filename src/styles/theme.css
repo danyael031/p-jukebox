@@ -1,0 +1,7 @@
+@import "./themes/nord.css";
+@import "./themes/default.css";
+
+
+.themeRoot {
+  min-height: 100%;
+}

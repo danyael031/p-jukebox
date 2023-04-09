@@ -21,18 +21,20 @@ import { router } from './router';
 import {
   RouterProvider,
 } from "react-router-dom";
-import { SearchBar } from './components/SearchBar';
+import { CSSTheme } from './styles/CSSTheme';
 
 
 function App() {
   useSetAudioPlayerEvents(audioPlayer);
   return (
-    <div className={appStyle.App}>
-      <div className={appStyle.content}>
-        <RouterProvider router={router}/>
+    <CSSTheme>
+      <div className={`${appStyle.App}`}>
+        <div className={appStyle.content}>
+          <RouterProvider router={router} />
+        </div>
+        <MediaControl />
       </div>
-      <MediaControl/>
-    </div>
+    </CSSTheme>
   )
 }
 

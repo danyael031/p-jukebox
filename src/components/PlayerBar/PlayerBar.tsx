@@ -18,6 +18,7 @@ import { audioPlayer } from "../../audioPlayer";
 import { useAppStore } from "../../zustand";
 import { PlayPauseButton, SkipNextButton, SkipPreviousButton } from "./PlayerButtons";
 import styles from './styles.module.css';
+import { PlayerSong } from "../PlayerSong";
 
 
 export function MediaControl() {
@@ -48,7 +49,8 @@ export function MediaControl() {
   }
 
   return (
-    <div className={styles.mediaControlMargin}>
+    <div className={styles.barMargin}>
+      <PlayerSong/>
       <div className={styles.mediaControlContainer}>
         <SkipPreviousButton
           onClick={() => { prevSong(); }}
