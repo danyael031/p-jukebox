@@ -6,6 +6,9 @@
   user-select: none; /* Standard syntax */
   flex-grow: 1;
   background-color: var(--p0);
+  box-shadow:rgba(15, 17, 21, 0.35) 0px 6px 9px 0px;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
 }
 
 .barMargin{

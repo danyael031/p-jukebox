@@ -14,23 +14,40 @@
 * limitations under the License.
 */
 import React, { useState } from "react";
-import { Icon } from "../Icon/Icon";
 import styles from "./styles.module.css";
 import { DefaultAlbumCover } from "./DefaultAlbumCover";
 
 const transparentPixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
-export function AlbumCover({ imageUrl="", albumSize="20rem", className="" }: { imageUrl: string, albumSize: string, className?: string }) {
+interface AlbumCoverProps {
+  imageUrl?: string,
+  albumSize: string,
+  className?: string,
+  style?: React.CSSProperties,
+}
+
+export function AlbumCover({
+  imageUrl="",
+  albumSize="20rem",
+  className="",
+  style= {} ,
+}
+  : AlbumCoverProps) {
   const [hasError, setHasError] = useState<boolean>(false);
 
   const handleOnError = () => {setHasError(true)};
 
-  const imageSrc = hasError ? transparentPixel : imageUrl;
+  const imageSrc = (hasError || !imageUrl )? transparentPixel : imageUrl;
+
+  const internalSyle = {width: albumSize, height: albumSize}
 
   return (
     <div
       className={`${styles.albumCoverContainer} ${className}`}
-      style={{width: albumSize, height: albumSize}}
+      style={{
+        ...internalSyle,
+        ...style
+      }}
     >
       <FallbackImage albumSize={albumSize}/>
       <img
