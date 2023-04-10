@@ -25,6 +25,8 @@ export const createPlayerSlice: StateCreator<
   PlayerState
 > = (set, get) => ({
   queue: [],
+  currentSongDuration: 0,
+  currentSongProgress: 0,
   currentlyPlaying: null,
   currentlyPlayingIndex: null,
   playStatus: 'paused',
@@ -81,5 +83,11 @@ export const createPlayerSlice: StateCreator<
     updatedState.queue = updatedQueue;
 
     set(updatedState);
+  },
+  updateSongDuration: (timeStamp: number)=>{
+    set({currentSongDuration: timeStamp})
+  },
+  updateSongProgress: (timeStamp: number)=>{
+    set({currentSongProgress: timeStamp})
   }
 })

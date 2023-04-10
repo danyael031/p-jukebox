@@ -41,7 +41,7 @@ export function Icon({
   iconName,
   iconStyle = "filled",
   className = "",
-  iconColor = "#000000",
+  iconColor = "",
   isDisabled = false,
   disableOpacity = 0.5,
   ...props

@@ -23,7 +23,6 @@ export function SkipPreviousButton(props: IconProps) {
     <Icon
       {...props}
       iconStyle="round"
-      iconColor="var(--p8)"
       iconName="skip_previous"
       className={styles.playerButton}
     />
@@ -39,7 +38,6 @@ export function PlayPauseButton({ isPlaying = false, ...props }: IconProps & { i
       {...props}
       iconName={playControl}
       iconStyle="round"
-      iconColor="var(--p8)"
       className={styles.playerButton}
     />
   )
@@ -52,7 +50,6 @@ export function SkipNextButton(props: IconProps) {
       {...props}
       iconName="skip_next"
       iconStyle="round"
-      iconColor="var(--p8)"
       className={styles.playerButton}
     />)
 }

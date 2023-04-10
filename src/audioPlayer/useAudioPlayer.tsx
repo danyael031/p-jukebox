@@ -21,18 +21,40 @@ export function useSetAudioPlayerEvents(audioPlayer: HTMLAudioElement) {
   const play = useAppStore(state => state.play);
   const pause = useAppStore(state => state.pause);
   const nextSong = useAppStore(state => state.nextSong);
+  const updateSongDuration = useAppStore(state => state.updateSongDuration);
+  const updateSongProgress = useAppStore(state => state.updateSongProgress);
   const currentlyPlaying = useAppStore(state => state.currentlyPlaying);
+
+
+
+  const handleOnLoadMetadata= (event: Event) =>{
+    console.log("on load metadata");
+    console.log(event);
+    console.log(event.target?.duration);
+    updateSongDuration(event.target?.duration);
+  }
+
+  const handleOnTimeUpdate = (event: Event) =>{
+    console.log("on time update");
+    console.log(event.target?.currentTime);
+    updateSongProgress(event.target?.currentTime);
+    audioPlayer.currentTime
+  }
 
 
   const configEventListeners: EffectCallback = () => {
     audioPlayer.addEventListener('play', play);
     audioPlayer.addEventListener('pause', pause);
     audioPlayer.addEventListener('ended', nextSong);
+    audioPlayer.addEventListener('loadedmetadata', handleOnLoadMetadata);
+    audioPlayer.addEventListener('timeupdate', handleOnTimeUpdate);
 
     return () => {
       audioPlayer.removeEventListener('play', play);
       audioPlayer.removeEventListener('pause', pause);
       audioPlayer.removeEventListener('ended', nextSong);
+      audioPlayer.removeEventListener('loadedmetadata', handleOnLoadMetadata);
+      audioPlayer.removeEventListener('timeupdate', handleOnTimeUpdate);
     }
   }
 

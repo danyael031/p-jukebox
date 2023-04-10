@@ -14,55 +14,20 @@
 * limitations under the License.
 */
 import React from "react";
-import { audioPlayer } from "../../audioPlayer";
-import { useAppStore } from "../../zustand";
-import { PlayPauseButton, SkipNextButton, SkipPreviousButton } from "./PlayerButtons";
 import styles from './styles.module.css';
 import { PlayerSong } from "../PlayerSong";
+import { MediaControlButtons } from "../MediaControlButtons";
+import { MediaControlTimeBar } from "../MediaControlTimeBar";
 
 
-export function MediaControl() {
-
-
-  const playStatus = useAppStore(store => store.playStatus);
-  const currentlyPlaying = useAppStore(store => store.currentlyPlaying);
-  const nextSong = useAppStore(store => store.nextSong);
-  const prevSong = useAppStore(store => store.prevSong);
-
-  const isDisabled = !currentlyPlaying;
-
-  function playPauseControl() {
-
-    if (isDisabled) {
-      return
-    }
-
-    if (playStatus === 'paused') {
-      audioPlayer.play();
-      return
-    }
-
-    if (playStatus === "playing") {
-      audioPlayer.pause();
-      return
-    }
-  }
+export function PlayerBar() {
 
   return (
     <div className={styles.barMargin}>
-      <PlayerSong/>
+      <PlayerSong />
       <div className={styles.mediaControlContainer}>
-        <SkipPreviousButton
-          onClick={() => { prevSong(); }}
-        />
-        <PlayPauseButton
-          isPlaying={playStatus === 'playing'}
-          onClick={playPauseControl}
-          isDisabled={isDisabled}
-        />
-        <SkipNextButton
-          onClick={() => { nextSong(); }}
-        />
+        <MediaControlButtons />
+        <MediaControlTimeBar />
       </div>
     </div>
   )

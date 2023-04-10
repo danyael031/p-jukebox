@@ -19,6 +19,8 @@ import { SongItem } from "../../types/service";
 export interface PlayerState {
   queue: Array<SongItem>,
   currentlyPlaying: SongItem | null,
+  currentSongDuration: number;
+  currentSongProgress: number;
   currentlyPlayingIndex: number | null,
   playStatus: PlayStatus,
   play: ()=> void,
@@ -26,4 +28,6 @@ export interface PlayerState {
   nextSong: ()=> void,
   prevSong: ()=> void,
   addToQueue: (songItem: SongItem ) => void,
+  updateSongDuration: (timeStamp: number) => void,
+  updateSongProgress: (timeStamp: number) => void,
 }
