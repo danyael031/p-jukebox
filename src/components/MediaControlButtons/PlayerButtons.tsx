@@ -38,7 +38,7 @@ export function PlayPauseButton({ isPlaying = false, ...props }: IconProps & { i
       {...props}
       iconName={playControl}
       iconStyle="round"
-      className={styles.playerButton}
+      className={styles.playButton}
     />
   )
 }

@@ -25,20 +25,25 @@ export function useSetAudioPlayerEvents(audioPlayer: HTMLAudioElement) {
   const updateSongProgress = useAppStore(state => state.updateSongProgress);
   const currentlyPlaying = useAppStore(state => state.currentlyPlaying);
 
-
-
   const handleOnLoadMetadata= (event: Event) =>{
-    console.log("on load metadata");
-    console.log(event);
-    console.log(event.target?.duration);
-    updateSongDuration(event.target?.duration);
+    const target = event.target as HTMLAudioElement;
+
+    if(!target){
+      return
+    }
+
+    updateSongDuration(target.duration);
   }
 
   const handleOnTimeUpdate = (event: Event) =>{
-    console.log("on time update");
-    console.log(event.target?.currentTime);
-    updateSongProgress(event.target?.currentTime);
-    audioPlayer.currentTime
+
+    const target = event.target as HTMLAudioElement;
+
+    if(!target){
+      return
+    }
+
+    updateSongProgress(target.currentTime);
   }
 
 
