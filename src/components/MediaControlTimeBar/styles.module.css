@@ -1,0 +1,10 @@
+.progressBar__line{
+  height: 100%;
+  background-color: var(--p8);
+}
+
+.progressBar__lineContainer{
+  height: 1rem;
+  width: 100%;
+  background-color: var(--p3);
+}

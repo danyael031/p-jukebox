@@ -1,4 +1,6 @@
-import { useAppStore } from "../../zustand"
+import { useAppStore } from "../../zustand";
+import styles from "./styles.module.css"
+
 
 function calculateSongProgress(songDuration: number, songProgress: number): number{
 
@@ -22,8 +24,8 @@ export function MediaControlTimeBar() {
 
   return (
     <div style={{ width: "100%" }}>
-      <div style={{ width: "100%", height: "1rem", backgroundColor: "gray" }}>
-        <div style={{ width: progressPercent, height: "1rem", backgroundColor: "blue" }} />
+      <div className={styles.progressBar__lineContainer}>
+        <div className={styles.progressBar__line} style={{ width: progressPercent }} />
       </div>
     </div>
   )
