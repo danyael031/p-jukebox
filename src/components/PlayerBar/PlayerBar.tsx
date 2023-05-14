@@ -23,12 +23,15 @@ import { MediaControlTimeBar } from "../MediaControlTimeBar";
 export function PlayerBar() {
 
   return (
-    <div className={styles.barMargin}>
-      <PlayerSong />
-      <div className={styles.mediaControlContainer}>
-        <MediaControlButtons />
-        <MediaControlTimeBar />
+    <>
+      <div className={styles.barMargin}>
+        <PlayerSong />
+        <div className={styles.mediaControlContainer}>
+          <MediaControlButtons />
+          <MediaControlTimeBar />
+        </div>
       </div>
-    </div>
+      <div className={styles.mediaControlContainer__spacer} />
+    </>
   )
 }

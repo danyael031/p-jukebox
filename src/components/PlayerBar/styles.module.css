@@ -14,6 +14,11 @@
   overflow: hidden;
 }
 
+.mediaControlContainer__spacer {
+  height: 16rem;
+  width: 100%;
+}
+
 .barMargin{
   padding: 3rem;
   width: 100%;
