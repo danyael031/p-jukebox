@@ -1,0 +1,12 @@
+
+
+.navBar__container{
+  padding: 3rem;
+  
+}
+
+.navBar{
+  background-color: var(--p0);
+  width: 1rem;
+  height: 1rem;
+}

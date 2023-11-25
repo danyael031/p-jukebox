@@ -13,4 +13,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-export const PIPED_API_ENDPOINT = "https://pipedapi.kavin.rocks";
+import { useAppStore } from "../../zustand";
+import { SongItemComponent } from "../SongItem";
+
+
+export function PlayList() {
+  const queue = useAppStore(state => state.queue);
+  return (
+
+    <div style={{ width: "50%", display: 'block' }}>
+      {
+        queue.map((item) => {
+          return (
+            <SongItemComponent key={item.url} item={item} />
+          )
+        })
+      }
+    </div>
+  )
+}
